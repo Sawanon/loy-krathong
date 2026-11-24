@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>ลอยกระทงด้วยกันนะ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <svg id="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-label="ชายหญิงลอยกระทงด้วยกันใต้แสงจันทร์">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b1026" />
+          <stop offset="0.6" stop-color="#2b1f4a" />
+          <stop offset="1" stop-color="#6b3f6e" />
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a2f63" />
+          <stop offset="1" stop-color="#0a0f2a" />
+        </linearGradient>
+        <radialGradient id="moonGlow">
+          <stop offset="0" stop-color="#fff4d6" stop-opacity="0.45" />
+          <stop offset="1" stop-color="#fff4d6" stop-opacity="0" />
+        </radialGradient>
+        <radialGradient id="flameGlow">
+          <stop offset="0" stop-color="#ffd27a" stop-opacity="0.9" />
+          <stop offset="1" stop-color="#ff9a3c" stop-opacity="0" />
+        </radialGradient>
+
+        <!-- กระทงต้นแบบ: จุด (0,0) คือกึ่งกลางฐาน -->
+        <g id="kratong-tpl">
+          <circle class="glow" cx="0" cy="-52" r="38" fill="url(#flameGlow)" />
+          <ellipse cx="0" cy="-6" rx="42" ry="10" fill="#2f6b34" />
+          <path d="M-42 -8 L-34 -26 L-26 -10 L-18 -28 L-10 -10 L0 -30 L10 -10 L18 -28 L26 -10 L34 -26 L42 -8 Z" fill="#4c9a4a" stroke="#2f6b34" stroke-width="1.5" stroke-linejoin="round" />
+          <ellipse cx="-16" cy="-24" rx="7" ry="13" transform="rotate(-25 -16 -24)" fill="#ffb3cf" />
+          <ellipse cx="16" cy="-24" rx="7" ry="13" transform="rotate(25 16 -24)" fill="#ffb3cf" />
+          <ellipse cx="0" cy="-26" rx="7" ry="14" fill="#ffd1e2" />
+          <line x1="-8" y1="-26" x2="-12" y2="-58" stroke="#c98a5a" stroke-width="2" />
+          <line x1="8" y1="-26" x2="12" y2="-58" stroke="#c98a5a" stroke-width="2" />
+          <circle cx="-12" cy="-58" r="2" fill="#ff6a3c" />
+          <circle cx="12" cy="-58" r="2" fill="#ff6a3c" />
+          <rect x="-3.5" y="-48" width="7" height="22" rx="2" fill="#fff6d5" />
+          <path class="flame" d="M0 -66 C 6 -58, 5 -50, 0 -48 C -5 -50, -6 -58, 0 -66 Z" fill="#ffcf5a" />
+        </g>
+      </defs>
+
+      <!-- ท้องฟ้า -->
+      <rect width="1600" height="900" fill="url(#sky)" />
+      <g id="stars"></g>
+      <circle cx="930" cy="230" r="170" fill="url(#moonGlow)" />
+      <circle id="moon" cx="930" cy="230" r="55" fill="#fff4d6" />
+      <circle cx="912" cy="218" r="9" fill="#f1e2bd" opacity="0.6" />
+      <circle cx="945" cy="248" r="6" fill="#f1e2bd" opacity="0.6" />
+
+      <!-- ภูเขาไกลๆ -->
+      <path d="M0 560 L0 520 C 200 480, 350 470, 520 515 C 650 545, 760 500, 900 505 C 1050 512, 1200 470, 1400 500 C 1500 515, 1560 520, 1600 515 L1600 560 Z" fill="#1b1838" />
+
+      <!-- แม่น้ำ -->
+      <rect y="558" width="1600" height="342" fill="url(#water)" />
+      <g id="moon-reflect" fill="#fff4d6"></g>
+      <g id="shimmer" stroke="#9fb0ff" stroke-linecap="round"></g>
+      <g id="kratongs"></g>
+
+      <!-- ริมตลิ่ง -->
+      <path d="M0 900 L0 740 C 300 700, 600 720, 800 735 C 1000 750, 1200 790, 1600 820 L1600 900 Z" fill="#14281f" />
+      <g stroke="#1f3d2c" stroke-width="4" stroke-linecap="round" fill="none">
+        <path d="M120 735 q-4 -18 -10 -26 M128 734 q2 -20 8 -28 M136 735 q6 -14 14 -18" />
+        <path d="M420 722 q-4 -18 -10 -26 M428 722 q2 -20 8 -28 M436 723 q6 -14 14 -18" />
+        <path d="M1080 768 q-4 -18 -10 -26 M1088 769 q2 -20 8 -28 M1096 770 q6 -14 14 -18" />
+        <path d="M1400 808 q-4 -18 -10 -26 M1408 809 q2 -20 8 -28" />
+      </g>
+
+      <!-- ผู้ชาย (ชุดเขียวเข้ม) -->
+      <g id="boy" transform="translate(872 745)">
+        <g class="bob">
+          <ellipse cx="-12" cy="-4" rx="11" ry="6" fill="#3a2a20" />
+          <ellipse cx="12" cy="-4" rx="11" ry="6" fill="#3a2a20" />
+          <rect x="-20" y="-46" width="40" height="40" rx="8" fill="#2c3b33" />
+          <line x1="0" y1="-30" x2="0" y2="-7" stroke="#1d2722" stroke-width="2" />
+          <path d="M-24 -102 Q0 -108 24 -102 L30 -42 Q0 -36 -30 -42 Z" fill="#1f5c3a" />
+          <path d="M-8 -104 L0 -92 L8 -104" fill="none" stroke="#e9f5ec" stroke-width="3" stroke-linejoin="round" />
+          <path d="M-20 -95 Q-50 -84 -66 -62" fill="none" stroke="#1f5c3a" stroke-width="13" stroke-linecap="round" />
+          <path d="M20 -95 Q34 -75 32 -54" fill="none" stroke="#1f5c3a" stroke-width="13" stroke-linecap="round" />
+          <circle cx="-70" cy="-60" r="7" fill="#ffe1cc" />
+          <circle cx="32" cy="-50" r="7" fill="#ffe1cc" />
+          <g id="boy-head">
+            <!-- รูปหน้าจริง: ถ้าโหลดได้ main.ts จะซ่อนหน้าการ์ตูน (.toon) -->
+            <g class="photo" style="display: none">
+              <image href="./non.png" x="-65.3" y="-258" width="135.9" height="186.8" />
+            </g>
+            <g class="toon">
+            <circle cx="0" cy="-148" r="42" fill="#ffe1cc" />
+            <path d="M-45 -145 C -50 -215, 50 -215, 45 -145 C 40 -160, 30 -165, 22 -158 C 15 -172, -5 -174, -12 -162 C -22 -168, -38 -165, -45 -145 Z" fill="#2b1b14" />
+            <path d="M2 -195 C 0 -210, 12 -217, 17 -208" fill="none" stroke="#2b1b14" stroke-width="5" stroke-linecap="round" />
+            <g class="eye"><ellipse cx="-15" cy="-142" rx="5" ry="6.5" fill="#2b1a14" /><circle cx="-13" cy="-145" r="1.8" fill="#fff" /></g>
+            <g class="eye"><ellipse cx="15" cy="-142" rx="5" ry="6.5" fill="#2b1a14" /><circle cx="17" cy="-145" r="1.8" fill="#fff" /></g>
+            <ellipse cx="-26" cy="-129" rx="7" ry="4.5" fill="#ff9fb8" opacity="0.7" />
+            <ellipse cx="26" cy="-129" rx="7" ry="4.5" fill="#ff9fb8" opacity="0.7" />
+            <path d="M-8 -127 Q0 -119 8 -127" fill="none" stroke="#b5525f" stroke-width="2.5" stroke-linecap="round" />
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- ผู้หญิง (ชุดชมพูอ่อน) -->
+      <g id="girl" transform="translate(728 745)">
+        <g class="bob">
+          <ellipse cx="-12" cy="-4" rx="10" ry="6" fill="#e88aa8" />
+          <ellipse cx="12" cy="-4" rx="10" ry="6" fill="#e88aa8" />
+          <rect x="-15" y="-26" width="8" height="22" fill="#ffe1cc" />
+          <rect x="7" y="-26" width="8" height="22" fill="#ffe1cc" />
+          <path d="M-20 -102 Q0 -108 20 -102 L44 -24 Q0 -14 -44 -24 Z" fill="#fbcfe0" stroke="#f2a9c4" stroke-width="2" stroke-linejoin="round" />
+          <path d="M-25 -80 Q0 -76 25 -80 L26 -72 Q0 -68 -26 -72 Z" fill="#f6b3cc" />
+          <path d="M18 -95 Q48 -84 66 -62" fill="none" stroke="#fbcfe0" stroke-width="12" stroke-linecap="round" />
+          <path d="M-18 -95 Q-34 -75 -32 -54" fill="none" stroke="#fbcfe0" stroke-width="12" stroke-linecap="round" />
+          <circle cx="70" cy="-60" r="7" fill="#ffe1cc" />
+          <circle cx="-32" cy="-50" r="7" fill="#ffe1cc" />
+          <g id="girl-head">
+            <!-- รูปหน้าจริง: ตัดผมยาวที่ระดับไหล่ด้วย clipPath -->
+            <g class="photo" style="display: none">
+              <clipPath id="girl-clip">
+                <ellipse cx="0" cy="-168" rx="112" ry="96" />
+              </clipPath>
+              <image href="./noey.png" x="-161" y="-270.5" width="252" height="290" clip-path="url(#girl-clip)" />
+              <g transform="translate(42 -228)">
+                <circle cx="0" cy="-7" r="6" fill="#ff8fb3" />
+                <circle cx="6.6" cy="-2" r="6" fill="#ff8fb3" />
+                <circle cx="4" cy="6" r="6" fill="#ff8fb3" />
+                <circle cx="-4" cy="6" r="6" fill="#ff8fb3" />
+                <circle cx="-6.6" cy="-2" r="6" fill="#ff8fb3" />
+                <circle cx="0" cy="0" r="4" fill="#ffe27a" />
+              </g>
+            </g>
+            <g class="toon">
+            <circle cx="0" cy="-208" r="17" fill="#4a2c20" />
+            <path d="M-52 -150 C -54 -215, 54 -215, 52 -150 L50 -108 C 42 -98, 32 -104, 32 -118 L-32 -118 C -32 -104, -42 -98, -50 -108 Z" fill="#4a2c20" />
+            <circle cx="0" cy="-148" r="42" fill="#ffe1cc" />
+            <path d="M-43 -150 C -42 -212, 42 -212, 43 -150 C 30 -168, 12 -166, 0 -176 C -12 -164, -30 -168, -43 -150 Z" fill="#4a2c20" />
+            <g transform="translate(34 -186)">
+              <circle cx="0" cy="-7" r="6" fill="#ff8fb3" />
+              <circle cx="6.6" cy="-2" r="6" fill="#ff8fb3" />
+              <circle cx="4" cy="6" r="6" fill="#ff8fb3" />
+              <circle cx="-4" cy="6" r="6" fill="#ff8fb3" />
+              <circle cx="-6.6" cy="-2" r="6" fill="#ff8fb3" />
+              <circle cx="0" cy="0" r="4" fill="#ffe27a" />
+            </g>
+            <g class="eye"><ellipse cx="-15" cy="-142" rx="5" ry="6.5" fill="#2b1a14" /><circle cx="-13" cy="-145" r="1.8" fill="#fff" /></g>
+            <g class="eye"><ellipse cx="15" cy="-142" rx="5" ry="6.5" fill="#2b1a14" /><circle cx="17" cy="-145" r="1.8" fill="#fff" /></g>
+            <ellipse cx="-26" cy="-129" rx="7" ry="4.5" fill="#ff9fb8" opacity="0.8" />
+            <ellipse cx="26" cy="-129" rx="7" ry="4.5" fill="#ff9fb8" opacity="0.8" />
+            <path d="M-6 -127 Q0 -121 6 -127" fill="none" stroke="#b5525f" stroke-width="2.5" stroke-linecap="round" />
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <g id="hearts"></g>
+
+      <text id="title" x="800" y="100" text-anchor="middle">สุขสันต์วันลอยกระทง</text>
+      <text id="subtitle" x="800" y="145" text-anchor="middle">ปีนี้ขอลอยกระทงกับเธอนะ</text>
+      <text id="hint" x="800" y="875" text-anchor="middle">แตะเพื่อลอยกระทงอีกอัน</text>
+    </svg>
+    <div id="fade"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

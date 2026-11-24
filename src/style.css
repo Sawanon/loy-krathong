@@ -1,0 +1,56 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #0b1026;
+  overflow: hidden;
+}
+
+#scene {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#scene text {
+  font-family: 'Mali', system-ui, sans-serif;
+  opacity: 0;
+}
+
+#title {
+  font-size: 56px;
+  font-weight: 700;
+  fill: #ffe9f2;
+}
+
+#subtitle {
+  font-size: 28px;
+  font-weight: 500;
+  fill: #ffc8dd;
+}
+
+#hint {
+  font-size: 20px;
+  fill: #9fb0ff;
+}
+
+#fade {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+}
+
+/* จอแนวตั้ง (มือถือ) เห็นกว้างแค่ ~440 หน่วย: ย่อตัวอักษร */
+@media (max-aspect-ratio: 1/1) {
+  #title {
+    font-size: 36px;
+  }
+  #subtitle {
+    font-size: 20px;
+  }
+}
